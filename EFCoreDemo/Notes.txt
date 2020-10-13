@@ -1,0 +1,10 @@
+﻿
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+https://www.entityframeworktutorial.net/efcore/install-entity-framework-core.aspx
+
+Migration
+Scaffold-DbContext "Server=.\SQLExpress;Database=SSB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Force Migration
+Scaffold-DbContext "Server=.\SQLExpress;Database=SSB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
