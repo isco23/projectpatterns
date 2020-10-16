@@ -13,9 +13,10 @@ namespace FirstAppEFCore.Services
         {
             _courseService = courseService;
         }
-        public Task<Course> AddCourseAsync(Course newCourse)
+        public async Task<bool> AddCourseAsync(Course newCourse)
         {
-            return _courseService.AddAsync(newCourse);
+            await _courseService.AddAsync(newCourse);
+            return true;
         }
 
         public void Dispose()

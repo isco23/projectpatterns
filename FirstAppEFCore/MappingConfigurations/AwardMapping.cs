@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
 using FirstAppEFCore.DTO;
+using FirstAppEFCore.Models;
+using FirstAppEFCore.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FirstAppEFCore.MappingConfigurations
 {
-    public class StudentMapping : Profile
+    public class AwardMapping : Profile
     {
-        public StudentMapping()
+        public AwardMapping()
         {
-            CreateMap<Student, VMStudent>()                
-                .ReverseMap();                
+            CreateMap<Award, VMAward>();
         }
     }
 }

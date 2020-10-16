@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstAppEFCore.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,7 @@ namespace FirstAppEFCore.Services
 {
     public interface IStudentService : IDisposable
     {
-        Task<Student> AddStudent(Student student);
-
-        //Task<Student> GetStudentById(int id);
-
-        //Task<List<Student>> GetAll();
+        Task<bool> AddStudent(VMStudent student);
+        List<VMStudent> GetByName(VMStudent student);        
     }
 }

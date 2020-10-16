@@ -7,6 +7,6 @@ namespace FirstAppEFCore
 {
     public interface ICourseService : IDisposable
     {
-        Task<Course> AddCourseAsync(Course newCourse);
+        Task<bool> AddCourseAsync(Course newCourse);
     }
 }

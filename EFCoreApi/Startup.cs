@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using FirstAppEFCore;
+using FirstAppEFCore.Helper;
 using FirstAppEFCore.MappingConfigurations;
+using FirstAppEFCore.Security;
 using FirstAppEFCore.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,9 +32,13 @@ namespace EFCoreApi
         {
             MappingConfiguration(services);            
             services.AddDbContext<FirstAppEFCore.EFDemoContext>();
-            services.AddTransient(typeof(IBaseService<>), typeof(BaseService<>));
-            services.AddTransient<IStudentService, StudentService>();
-            services.AddTransient<ICourseService, CourseService>();
+            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<ILessonService, LessonService>();
+            services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<IAwardService, AwardService>();           
+            
             services.AddControllers();
         }
 
@@ -42,6 +48,8 @@ namespace EFCoreApi
             {
                 mc.AddProfile(new StudentMapping());
                 mc.AddProfile(new CourseMapping());
+                mc.AddProfile(new LessonMapping());
+                mc.AddProfile(new AwardMapping());
             });
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
@@ -54,6 +62,7 @@ namespace EFCoreApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors();
             app.UseRouting();
 
             app.UseAuthorization();

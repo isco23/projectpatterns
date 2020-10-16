@@ -32,5 +32,13 @@ namespace EFCoreApi.Controllers
         {
             return Ok(_baseService.GetAll());
         }
+
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public async Task<bool> Delete(int id)
+        {
+            await _baseService.DeleteAsync(id);
+            return true;
+        }           
     }
 }

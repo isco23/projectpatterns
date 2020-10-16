@@ -41,7 +41,7 @@ namespace EFCoreApi.Controllers
         public async Task<IActionResult> GetJson()
         {
             var studentList = await _baseService.GetAll().ToListAsync();
-            var std = _mapper.Map<List<VMStudent>>(studentList);
+            var std = _mapper.Map<List<VMStudent>>(studentList);            
             string json = ConvertJson.Serialize(std);
             return Ok(json);
         }
